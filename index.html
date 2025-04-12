@@ -9,108 +9,116 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f8f8f8;
+            background-color: #f5f5f5;
         }
         header {
             background-color: #232f3e;
             color: white;
-            padding: 15px;
             text-align: center;
+            padding: 20px 0;
         }
         nav {
-            margin: 10px;
-            background-color: #333;
-            padding: 10px;
+            background-color: #232f3e;
+            padding: 10px 0;
             text-align: center;
         }
         nav a {
             color: white;
-            margin: 10px;
             text-decoration: none;
-            font-weight: bold;
+            margin: 0 20px;
+            font-size: 18px;
         }
         nav a:hover {
-            background-color: #555;
-            padding: 5px 10px;
-            border-radius: 5px;
+            text-decoration: underline;
         }
-        section {
-            margin: 20px;
+        .main-content {
             padding: 20px;
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            display: none;
         }
-        h2 {
+        .active {
+            display: block;
+        }
+        .tab-content {
+            background-color: white;
+            padding: 20px;
+            margin-top: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .tab-content h2 {
             color: #232f3e;
+        }
+        footer {
+            background-color: #232f3e;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
         }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>Amazon Seller Central Practice Environment</h1>
-    <p>Welcome to your virtual Amazon Seller Central Dashboard! Click below to practice different tools.</p>
+    <h1>Amazon Seller Central Practice Site</h1>
 </header>
 
 <nav>
-    <a href="#dashboard">Dashboard</a>
-    <a href="#inventory">Inventory</a>
-    <a href="#product-listings">Product Listings</a>
-    <a href="#orders">Orders Management</a>
-    <a href="#advertising">Advertising & Reports</a>
-    <a href="#account-settings">Account Settings</a>
-    <a href="#messages">Messages</a>
-    <a href="#excel-practice">Excel Sheet Practice</a>
+    <a href="javascript:void(0)" onclick="openTab('dashboard')">Dashboard</a>
+    <a href="javascript:void(0)" onclick="openTab('inventory')">Inventory</a>
+    <a href="javascript:void(0)" onclick="openTab('orders')">Orders</a>
+    <a href="javascript:void(0)" onclick="openTab('reports')">Reports</a>
 </nav>
 
-<section id="dashboard">
-    <h2>1. Dashboard Overview</h2>
-    <p>This is your dashboard where you'll find an overview of your sales, orders, account health, and more.</p>
-    <p><strong>Practice:</strong> Try clicking on the different sections of the dashboard to get familiar with the layout.</p>
-</section>
+<div id="dashboard" class="main-content">
+    <div class="tab-content">
+        <h2>Dashboard</h2>
+        <p>Welcome to your Amazon Seller Dashboard. Here you can see your sales, performance, and other key metrics.</p>
+    </div>
+</div>
 
-<section id="inventory">
-    <h2>2. Inventory Management</h2>
-    <p>This is where you manage your products, add new items, update stock levels, and view your inventory.</p>
-    <p><strong>Practice:</strong> Add a new product or update an existing product's inventory details.</p>
-</section>
+<div id="inventory" class="main-content">
+    <div class="tab-content">
+        <h2>Inventory Management</h2>
+        <p>Here you can add, update, or remove products from your inventory.</p>
+    </div>
+</div>
 
-<section id="product-listings">
-    <h2>3. Product Listings</h2>
-    <p>Here you can create and manage your product listings on Amazon. Add titles, descriptions, and images for each product.</p>
-    <p><strong>Practice:</strong> Try adding a new product and filling in product details.</p>
-</section>
+<div id="orders" class="main-content">
+    <div class="tab-content">
+        <h2>Order Management</h2>
+        <p>Track your orders, process shipments, and manage customer requests.</p>
+    </div>
+</div>
 
-<section id="orders">
-    <h2>4. Orders Management</h2>
-    <p>This section allows you to view orders, track shipping, handle returns, and manage customer service issues.</p>
-    <p><strong>Practice:</strong> Manage an incoming order and simulate processing a return.</p>
-</section>
+<div id="reports" class="main-content">
+    <div class="tab-content">
+        <h2>Reports</h2>
+        <p>View your sales, performance, and other reports to monitor your business growth.</p>
+    </div>
+</div>
 
-<section id="advertising">
-    <h2>5. Advertising & Reports</h2>
-    <p>Create campaigns to promote your products, track ad performance, and view detailed reports about your sales and advertising efforts.</p>
-    <p><strong>Practice:</strong> Try setting up an advertising campaign for one of your products.</p>
-</section>
+<footer>
+    <p>Created by Syed Ali Ahsan</p>
+</footer>
 
-<section id="account-settings">
-    <h2>6. Account Settings</h2>
-    <p>Modify your account settings, including tax info, business details, and security preferences.</p>
-    <p><strong>Practice:</strong> Update your account settings and security preferences.</p>
-</section>
+<script>
+    function openTab(tabName) {
+        // Hide all sections
+        var sections = document.querySelectorAll('.main-content');
+        sections.forEach(function(section) {
+            section.classList.remove('active');
+        });
 
-<section id="messages">
-    <h2>7. Messages</h2>
-    <p>Communicate with Amazon support, customers, and partners through the message center.</p>
-    <p><strong>Practice:</strong> Send a test message to a customer or Amazon support.</p>
-</section>
+        // Show the selected section
+        var activeTab = document.getElementById(tabName);
+        activeTab.classList.add('active');
+    }
 
-<section id="excel-practice">
-    <h2>8. Excel Sheet Practice</h2>
-    <p>Download a sample Excel sheet to manage your inventory and order details.</p>
-    <p><strong>Practice:</strong> Download the Excel file, fill it with your product details, and update it as if you were managing a real store.</p>
-</section>
+    // Default to showing the dashboard
+    openTab('dashboard');
+</script>
 
 </body>
 </html>
